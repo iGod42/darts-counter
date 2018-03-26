@@ -6,8 +6,8 @@ import registerServiceWorker from './registerServiceWorker'
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
 import rootReducer from './rootReducer'
-import { Route } from 'react-router'
 import createHistory from 'history/createBrowserHistory'
+import { Route } from 'react-router-dom'
 
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import App from './components/App'
@@ -20,9 +20,7 @@ const store = createStore(rootReducer,
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        <Route exact path="/" component={App}/>
-      </div>
+      <Route path="/" component={App}/>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root'))
