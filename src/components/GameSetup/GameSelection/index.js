@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { Button } from '../shared'
+import { Button } from '../../shared/index'
+import './style.css'
 
 const GameSelection = ({push}) =>
   (
     <div>
-      <header>
-        <h1>Start a new Game</h1>
-      </header>
-      <Button text="x01" action={() => push('/x01')}/>
-      <Button text="cricket" action={() => push('/cricket')}/>
+      <div className={`gameSelect`}>
+        <Button big text="x01" action={() => push('/x01')}/>
+        <Button big text="cricket" action={() => push('/cricket')}/>
+      </div>
     </div>
   )
 

@@ -1,0 +1,10 @@
+.gameSelect {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.gameSelect > * {
+    flex-grow: 1;
+}

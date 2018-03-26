@@ -5,8 +5,15 @@
     padding: 1em 2em;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    margin: 0.5em 0.25em;
     cursor: pointer;
+    margin: 0.25em;
+    align-items:stretch;
+}
+
+.big {
+    padding: 2em 0;
+    font-size: 2em;
+    margin: 0.25em;
+    width: 10em;
+    height: 7em;
 }
