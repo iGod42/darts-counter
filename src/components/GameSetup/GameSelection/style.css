@@ -1,10 +1,20 @@
-.gameSelect {
+@media (orientation: portrait){
+    .gameOptions{
+        flex-direction: column;
+    }
+}
+
+.gameOptions {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 100%;
+    align-items: center;
+    flex-grow: 1;
 }
 
-.gameSelect > * {
-    flex-grow: 1;
+.gameSelect {
+    width:100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
 }
