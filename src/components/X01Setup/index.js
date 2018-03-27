@@ -1,7 +1,9 @@
 import React from 'react'
 
+import X01Form from './X01Form'
+
 const X01Setup = () => (
-    <div>X01Setup</div>
+  <X01Form/>
 )
 
 export default X01Setup

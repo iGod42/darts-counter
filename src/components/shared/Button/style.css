@@ -5,17 +5,24 @@
     padding: 1em 2em;
     text-align: center;
     text-decoration: none;
-    cursor: pointer;
     margin: 0.25em;
     align-items: stretch;
 }
 
-.button:hover {
+.button:enabled {
+    cursor: pointer;
+}
+
+.button:hover:enabled {
     filter: brightness(85%);
 }
 
-.button:active {
+.button:active:enabled {
     transform: translate(0.1em, 0.1em);
+}
+
+.button:disabled {
+    background-color: darkgray;
 }
 
 .big {

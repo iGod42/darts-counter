@@ -1,0 +1,11 @@
+.formRow {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5em;
+}
+.formRow > label {
+    flex: 1;
+}
+.formRow > input,select {
+    flex: 3;
+}
