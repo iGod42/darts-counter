@@ -1,0 +1,45 @@
+.theForm {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.inputs {
+    flex: 1;
+}
+
+.formRow {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5em;
+    align-items: center;
+}
+
+.formRow > label {
+    flex: 1;
+}
+
+.formRow > input, select {
+    flex: 3;
+}
+
+.submitButton {
+    display: flex;
+    justify-content: stretch;
+}
+
+.submitButton > * {
+    flex: 1;
+}
+
+select {
+    height: 3em;
+    appearance: none;
+    border: 1px solid #bbb;
+    padding: .75em 1em .5em 1em;
+}
+
+label {
+    font-weight: bold;
+}
+
