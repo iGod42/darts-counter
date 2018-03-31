@@ -2,10 +2,11 @@
     background-color: #008CBA; /* Green */
     border: none;
     color: white;
-    padding: 1em 2em;
+    padding: 1em 3em;
     text-align: center;
     text-decoration: none;
-    margin: 0.25em;
+    margin: 0;
+    font-size: 1.5em;
     align-items: stretch;
     font-weight: bold;
 }
