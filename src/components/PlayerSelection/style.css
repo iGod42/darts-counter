@@ -1,0 +1,14 @@
+@media (orientation: portrait){
+    .playerSel{
+        flex-direction: column;
+    }
+}
+
+.playerSel {
+    display: flex;
+    justify-content: center;
+}
+
+.playerSel > * {
+    margin: 0.1em;
+}

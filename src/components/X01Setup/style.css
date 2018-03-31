@@ -1,7 +1,14 @@
+.x01 {
+    display: flex;
+    justify-content: stretch;
+    height: 100%;
+    flex-direction: column;
+}
+
 .theForm {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
 }
 
 .inputs {

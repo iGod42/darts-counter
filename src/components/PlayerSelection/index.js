@@ -3,18 +3,22 @@ import actions from './actions'
 import { connect } from 'react-redux'
 import Button from '../shared/Button'
 import { push } from 'react-router-redux'
+import './style.css'
 
 const PlayerSelection = ({setPlayers, push}) => (
   <div>
-    {
-      Array.from(Array(4).keys())
-      .map(nr => '' + (nr + 1))
-      .map(nr => <Button text={nr} key={nr}
-                         action={() => {
-                           setPlayers(nr)
-                           push('game')
-                         }}/>)
-    }
+    <h1 className={`mainHeader`}>Select Players</h1>
+    <div className={`playerSel`}>
+      {
+        Array.from(Array(4).keys())
+        .map(nr => '' + (nr + 1))
+        .map(nr => <Button text={nr} key={nr}
+                           action={() => {
+                             setPlayers(nr)
+                             push('game')
+                           }}/>)
+      }
+    </div>
   </div>
 )
 
