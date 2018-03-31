@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import x01Reducer from './components/X01Setup/reducer'
+import x01SetupReducer from './components/X01Setup/reducer'
+import x01GameReducer from './components/Game/X01/reducer'
 import psReducer from './components/PlayerSelection/reducer'
 import { actionTypes } from './actions'
 
@@ -16,6 +17,7 @@ const rootReducer = (state = {}, action) => {
 export default combineReducers({
   game: rootReducer,
   router: routerReducer,
-  x01Settings: x01Reducer,
-  playerSelection: psReducer
+  x01Settings: x01SetupReducer,
+  playerSelection: psReducer,
+  x01: x01GameReducer
 })

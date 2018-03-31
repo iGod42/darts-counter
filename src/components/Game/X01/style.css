@@ -4,12 +4,35 @@
     display: flex;
 }
 
-@media (orientation: portrait) {
+@media (max-width: 35em) {
     .gameFrame {
         flex-direction: column;
     }
 }
 
-.scoreBoard {
+@media (min-height: 27em) and (min-width: 35em) {
+    .rightKb {
+        display: none;
+    }
+}
+
+@media (max-height: 27em), (max-width: 35em) {
+    .leftKb {
+        display: none;
+    }
+}
+
+.gameLeft {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.gameLeft > .bottom {
+    display: flex;
+    align-items: end;
+}
+
+.gameLeft > .bottom > .main {
     flex: 1;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Scoreboard from './components/Scoreboard/index'
+import Keyboard from './components/Keyboard'
 import './style.css'
 
 const dummyScores = [
@@ -10,16 +11,29 @@ const dummyScores = [
   {playerName: 'Player 4', points: 501, legs: 0}
 ]
 
-const X01 = () => (
+const X01 = ({currentScore}) => (
   <div className={`gameFrame`}>
-    <div className={`scoreBoard`}>
+    <div className={`gameLeft`}>
       <Scoreboard playerScores={dummyScores}/>
+      <div className={`bottom`}>
+        <div className={'main'}>
+          <label>Current Score: </label>
+          <div>{JSON.stringify(currentScore)}</div>
+        </div>
+        <div className={`leftKb`}>
+          <Keyboard/>
+        </div>
+      </div>
+    </div>
+    <div className={`rightKb`}>
+      <Keyboard/>
     </div>
   </div>
 )
 
 const mapStateToProps = (state, ownProps) => ({
-  ...ownProps
+  ...ownProps,
+  currentScore: state.x01.currentScore
 })
 
 export default connect(mapStateToProps)(X01)

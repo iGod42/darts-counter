@@ -29,6 +29,11 @@ const store = createStore(persistedReducer,
 
 const persistor = persistStore(store)
 
+// workaround for ios
+document.addEventListener('touchmove', function (event) {
+  if (event.scale !== 1) { event.preventDefault(); }
+}, false);
+
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

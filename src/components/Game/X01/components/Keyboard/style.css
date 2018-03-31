@@ -1,0 +1,21 @@
+.keyboard .button {
+    padding: 1em 1.5em;
+    margin: 0;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.buttonRow {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    justify-content: stretch;
+}
+
+.buttonRow * {
+    flex: 1;
+}
