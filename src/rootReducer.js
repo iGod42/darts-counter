@@ -5,7 +5,7 @@ import psReducer from './components/PlayerSelection/reducer'
 import { actionTypes } from './actions'
 
 const rootReducer = (state = {}, action) => {
-  switch (action) {
+  switch (action.type) {
     case actionTypes.START_GAME:
       return {...state, selectedMode: action.mode}
     default:
@@ -14,7 +14,7 @@ const rootReducer = (state = {}, action) => {
 }
 
 export default combineReducers({
-  rootReducer,
+  game: rootReducer,
   router: routerReducer,
   x01Settings: x01Reducer,
   playerSelection: psReducer
