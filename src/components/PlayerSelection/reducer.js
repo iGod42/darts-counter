@@ -9,7 +9,7 @@ const reducer = (state = startState, action) => {
     case actionTypes.SET_PLAYERS: {
       return {
         ...state,
-        players: Array.from(Array(parseInt(action.nrOfPlayers)).keys()).map(nr => `Player ${nr + 1}`)
+        players: Array.from(Array(parseInt(action.nrOfPlayers, 10)).keys()).map(nr => `Player ${nr + 1}`)
       }
     }
     default:
