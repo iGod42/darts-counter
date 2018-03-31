@@ -1,0 +1,25 @@
+.scoreHeader {
+    display: flex;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.scoreHeader > * {
+    margin: 0.1em 0.25em;
+}
+
+.psNameHeader {
+    flex: 25;
+    text-align: left;
+}
+
+.psPointsHeader, .psLegsHeader {
+    flex: 5;
+}
+
+.psIconHeader {
+    flex: 1
+}

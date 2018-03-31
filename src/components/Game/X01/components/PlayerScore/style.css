@@ -1,0 +1,28 @@
+.playerScore {
+    display: flex;
+    width: 100%;
+    text-align: center;
+}
+
+.psColumn > div {
+    margin: 0.25em;
+}
+
+.psName {
+    flex: 25;
+    text-align: left;
+}
+
+.psPoints, .psLegs {
+    background-color: dodgerblue;
+    flex: 5;
+}
+
+.psIcon {
+    flex: 1;
+    font-weight: bold;
+}
+
+.activePlayer {
+    color: red
+}

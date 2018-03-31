@@ -1,0 +1,15 @@
+.gameFrame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+@media (orientation: portrait) {
+    .gameFrame {
+        flex-direction: column;
+    }
+}
+
+.scoreBoard {
+    flex: 1;
+}
