@@ -11,18 +11,43 @@ const calcNewValue = (lastValue, enteredNr) => {
   return lastValue * 10 + enteredNr
 }
 
-const captureScore = (status) => {
-  const theScore = JSON.parse(JSON.stringify(status.playerScores.find(ps => ps.player === status.toThrow)))
-  theScore.throws.push(status.currentScore)
+const captureScore = (state) => {
+  const theScore = JSON.parse(JSON.stringify(state.playerScores.find(ps => ps.player === state.toThrow)))
 
-  const nextIndex = status.players.indexOf(status.toThrow) + 1
-  const nextPlayer = status.players.length < nextIndex + 1 ? status.players[0] : status.players[nextIndex]
+  const remainingPoints = state.points - theScore.throws.reduce((sum, current) => current + sum, 0)
+
+  if (state.currentScore > remainingPoints) {
+    window.alert('Score too high')
+    return state
+  }
+  else if (state.currentScore === remainingPoints) {
+    const nextStartIndex = state.players.indexOf(state.startedBy) + 1
+    const nextStarter = state.players.length < nextStartIndex + 1 ? state.players[0] : state.players[nextStartIndex]
+
+    window.alert(`Congratulations ${state.toThrow} won`)
+
+    return {
+      ...state,
+      currentScore: 0,
+      playerScores: state.playerScores.map(ps => ({
+        ...JSON.parse(JSON.stringify(ps)),
+        throws: [],
+        legsWon: ps.player === state.toThrow ? ps.legsWon + 1 : ps.legsWon
+      })),
+      startedBy: nextStarter,
+      toThrow: nextStarter
+    }
+  }
+  const nextIndex = state.players.indexOf(state.toThrow) + 1
+  const nextPlayer = state.players.length < nextIndex + 1 ? state.players[0] : state.players[nextIndex]
+
+  theScore.throws.push(state.currentScore)
 
   return {
-    ...status,
+    ...state,
     currentScore: 0,
     toThrow: nextPlayer,
-    playerScores: status.playerScores.map(ps => ps.player === theScore.player ? theScore : ps)
+    playerScores: state.playerScores.map(ps => ps.player === theScore.player ? theScore : ps)
   }
 }
 
