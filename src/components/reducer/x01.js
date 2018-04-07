@@ -16,7 +16,7 @@ const captureScore = (state) => {
 
   const remainingPoints = state.points - theScore.throws.reduce((sum, current) => current + sum, 0)
 
-  if (state.currentScore > remainingPoints) {
+  if (state.currentScore >= remainingPoints-1) {
     window.alert('Score too high')
     return state
   }
