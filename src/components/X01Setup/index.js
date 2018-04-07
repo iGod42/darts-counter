@@ -24,30 +24,30 @@ const X01Setup = ({points, legs, sets, pointsChanged, legsChanged, setsChanged, 
             }
           </select>
         </div>
-        <div className={`formRow`}>
-          <label htmlFor="legs">Legs</label>
-          <select value={legs} onChange={(e) => {
-            legsChanged(e.target.value)
-          }}>
-            {
-              Array.from(Array(21).keys())
-              .slice(1)
-              .map(legs => <option key={legs} value={legs}>{legs}</option>)
-            }
-          </select>
-        </div>
-        <div className={`formRow`}>
-          <label htmlFor="sets">Sets</label>
-          <select value={sets} onChange={(e) => {
-            setsChanged(e.target.value)
-          }}>
-            {
-              Array.from(Array(21).keys())
-              .slice(1)
-              .map(sets => <option key={sets} value={sets}>{sets}</option>)
-            }
-          </select>
-        </div>
+        {/*<div className={`formRow`}>*/}
+          {/*<label htmlFor="legs">Legs</label>*/}
+          {/*<select value={legs} onChange={(e) => {*/}
+            {/*legsChanged(e.target.value)*/}
+          {/*}}>*/}
+            {/*{*/}
+              {/*Array.from(Array(21).keys())*/}
+              {/*.slice(1)*/}
+              {/*.map(legs => <option key={legs} value={legs}>{legs}</option>)*/}
+            {/*}*/}
+          {/*</select>*/}
+        {/*</div>*/}
+        {/*<div className={`formRow`}>*/}
+          {/*<label htmlFor="sets">Sets</label>*/}
+          {/*<select value={sets} onChange={(e) => {*/}
+            {/*setsChanged(e.target.value)*/}
+          {/*}}>*/}
+            {/*{*/}
+              {/*Array.from(Array(21).keys())*/}
+              {/*.slice(1)*/}
+              {/*.map(sets => <option key={sets} value={sets}>{sets}</option>)*/}
+            {/*}*/}
+          {/*</select>*/}
+        {/*</div>*/}
       </div>
       <div className={`submitButton`}>
         <Button text="Select Players" action={() => {
