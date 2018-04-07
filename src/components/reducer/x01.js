@@ -11,6 +11,21 @@ const calcNewValue = (lastValue, enteredNr) => {
   return lastValue * 10 + enteredNr
 }
 
+const captureScore = (status) => {
+  const theScore = JSON.parse(JSON.stringify(status.playerScores.find(ps => ps.player === status.toThrow)))
+  theScore.throws.push(status.currentScore)
+
+  const nextIndex = status.players.indexOf(status.toThrow) + 1
+  const nextPlayer = status.players.length < nextIndex + 1 ? status.players[0] : status.players[nextIndex]
+
+  return {
+    ...status,
+    currentScore: 0,
+    toThrow: nextPlayer,
+    playerScores: status.playerScores.map(ps => ps.player === theScore.player ? theScore : ps)
+  }
+}
+
 export default (state, action) => {
   switch (action.type) {
     case actionTypes.NR_PRESSED:
@@ -22,6 +37,8 @@ export default (state, action) => {
         ...state,
         currentScore: parseInt(state.currentScore / 10, 10)
       }
+    case actionTypes.ENTER_PRESSED:
+      return captureScore(state)
     default:
       return state
   }
