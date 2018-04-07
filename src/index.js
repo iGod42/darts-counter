@@ -5,7 +5,7 @@ import registerServiceWorker from './registerServiceWorker'
 
 import { Provider } from 'react-redux'
 import { applyMiddleware, createStore } from 'redux'
-import rootReducer from './rootReducer'
+import rootReducer from './components/reducer/index'
 import createHistory from 'history/createBrowserHistory'
 import { Route } from 'react-router-dom'
 import { persistReducer, persistStore } from 'redux-persist'

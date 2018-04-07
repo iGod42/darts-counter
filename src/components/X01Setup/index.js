@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import globalActions from '../../actions'
-import actions from './actions'
+import actions from '../reducer/actions'
 import { push } from 'react-router-redux'
 import Button from '../shared/Button'
 
@@ -66,7 +65,7 @@ const X01Setup = ({points, legs, sets, pointsChanged, legsChanged, setsChanged, 
 
 const mapStateToProps = (state, ownProps) => ({
   ...ownProps,
-  ...state.x01Settings
+  ...state.game
 })
 
-export default connect(mapStateToProps, {...globalActions, ...actions, push})(X01Setup)
+export default connect(mapStateToProps, {...actions, push})(X01Setup)

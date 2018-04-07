@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
 import {Button} from '../shared/index'
 
-import actions from '../../actions'
+import actions from '../reducer/actions'
 
 import './style.css'
 

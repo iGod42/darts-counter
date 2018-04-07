@@ -1,6 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import actions from '../../actions'
+import propTypes from 'prop-types'
 
 import Button from '../../../../shared/Button'
 import './style.css'
@@ -30,8 +29,12 @@ const Keyboard = ({nrPressed, enter, del}) => (
   </div>
 )
 
-const mapStateToProps = (state, ownProps) => ({
-  ...ownProps
-})
+Keyboard.propTypes = {
+  nrPressed: propTypes.func.isRequired,
+  enter: propTypes.func.isRequired,
+  del: propTypes.func.isRequired
+}
 
-export default connect(mapStateToProps, actions)(Keyboard)
+
+
+export default Keyboard

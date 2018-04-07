@@ -1,9 +1,5 @@
 import { actionTypes } from './actions'
 
-const defState = {
-  currentScore: 0
-}
-
 const calcNewValue = (lastValue, enteredNr) => {
   if ((lastValue === 18 && enteredNr !== 0) || lastValue >= 180)
     return lastValue
@@ -15,7 +11,7 @@ const calcNewValue = (lastValue, enteredNr) => {
   return lastValue * 10 + enteredNr
 }
 
-export default (state = defState, action) => {
+export default (state, action) => {
   switch (action.type) {
     case actionTypes.NR_PRESSED:
       return {

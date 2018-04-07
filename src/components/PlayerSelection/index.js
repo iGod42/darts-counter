@@ -1,5 +1,5 @@
 import React from 'react'
-import actions from './actions'
+import actions from '../reducer/actions'
 import { connect } from 'react-redux'
 import Button from '../shared/Button'
 import { push } from 'react-router-redux'
