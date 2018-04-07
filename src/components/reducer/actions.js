@@ -1,4 +1,5 @@
 const actionTypes = {
+  SET_MODE: '@@GAME:SET_MODE',
   START_GAME: '@@GAME:START_GAME',
 
   SET_PLAYERS: '@@PS:SET_PLAYERS',
@@ -17,12 +18,16 @@ const setPlayers = (nrOfPlayers) => ({
   nrOfPlayers
 })
 
-function startGame (mode) {
+function setMode (mode) {
   return {
-    type: actionTypes.START_GAME,
+    type: actionTypes.SET_MODE,
     mode
   }
 }
+
+const startGame = () => ({
+  type: actionTypes.START_GAME
+})
 
 const enter = () => ({
   type: actionTypes.ENTER_PRESSED
@@ -49,4 +54,4 @@ const setsChanged = (newSets) => ({
 })
 
 export { actionTypes }
-export default {startGame, setPlayers, enter, del, nrPressed, pointsChanged, legsChanged, setsChanged}
+export default {setMode, setPlayers, enter, del, startGame, nrPressed, pointsChanged, legsChanged, setsChanged}

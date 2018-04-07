@@ -5,7 +5,7 @@ import Button from '../shared/Button'
 import { push } from 'react-router-redux'
 import './style.css'
 
-const PlayerSelection = ({setPlayers, push}) => (
+const PlayerSelection = ({setPlayers, push, startGame}) => (
   <div>
     <h1 className={`mainHeader`}>Select Players</h1>
     <div className={`playerSel`}>
@@ -15,6 +15,7 @@ const PlayerSelection = ({setPlayers, push}) => (
         .map(nr => <Button text={nr} key={nr}
                            action={() => {
                              setPlayers(nr)
+                             startGame()
                              push('game')
                            }}/>)
       }

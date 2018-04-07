@@ -7,7 +7,7 @@ import Button from '../shared/Button'
 
 import './style.css'
 
-const X01Setup = ({points, legs, sets, pointsChanged, legsChanged, setsChanged, startGame, push}) => (
+const X01Setup = ({points, legs, sets, pointsChanged, legsChanged, setsChanged, push}) => (
   <div className={`x01`}>
     <h1 className={`mainHeader`}>Game Setup</h1>
     <div className={`theForm`}>
@@ -51,7 +51,6 @@ const X01Setup = ({points, legs, sets, pointsChanged, legsChanged, setsChanged, 
       </div>
       <div className={`submitButton`}>
         <Button text="Select Players" action={() => {
-          startGame('x01')
           push(`player-selection`)
         }}/>
       </div>

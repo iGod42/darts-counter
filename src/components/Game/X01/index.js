@@ -5,17 +5,10 @@ import actions from '../../reducer/actions'
 import Keyboard from './components/Keyboard'
 import './style.css'
 
-const dummyScores = [
-  {playerName: 'Player 1', points: 501, legs: 0},
-  {playerName: 'Player 2', points: 501, legs: 0, didBegin: true},
-  {playerName: 'Player 3', points: 501, legs: 0, theirTurn: true},
-  {playerName: 'Player 4', points: 501, legs: 0}
-]
-
-const X01 = ({currentScore, del, enter, nrPressed}) => (
+const X01 = ({currentScore, del, enter, nrPressed, playerScores}) => (
   <div className={`gameFrame`}>
     <div className={`gameLeft`}>
-      <Scoreboard playerScores={dummyScores}/>
+      <Scoreboard playerScores={playerScores}/>
       <div className={`bottom`}>
         <div className={'main'}>
           <label>Current Score: </label>
@@ -32,9 +25,21 @@ const X01 = ({currentScore, del, enter, nrPressed}) => (
   </div>
 )
 
-const mapStateToProps = (state, ownProps) => ({
-  ...ownProps,
-  currentScore: state.game.currentScore
+const createPS = (targetScore, startedBy, toThrow) => (ps) => ({
+  playerName: ps.player,
+  points: targetScore - ps.throws.reduce((total, num) => total + num, 0),
+  legs: ps.legsWon,
+  didBegin: ps.player === startedBy,
+  theirTurn: ps.player === toThrow
 })
+
+const mapStateToProps = (state, ownProps) => {
+  console.log(state)
+  return ({
+    ...ownProps,
+    currentScore: state.game.currentScore,
+    playerScores: state.game.playerScores.map(createPS(state.game.points, state.game.startedBy, state.game.toThrow))
+  })
+}
 
 export default connect(mapStateToProps, actions)(X01)
