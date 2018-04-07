@@ -1,0 +1,33 @@
+.scoreBubble {
+    width: 5em;
+    height: 3em;
+    margin: 1em;
+    border: 2px solid white;
+    border-radius: 0.75em;
+
+    background-color: dodgerblue;
+
+    color: white;
+    line-height: 3em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.scoreBubble > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.manuallyEntered {
+    background-color: #db6c10;
+}
+
+.noOutshot {
+    background-color: red;
+}
+
+.outshot {
+    background-color: green;
+}

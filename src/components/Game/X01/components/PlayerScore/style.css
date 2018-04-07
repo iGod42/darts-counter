@@ -8,6 +8,10 @@
     margin: 0.25em;
 }
 
+.psColumn {
+    background-color: white;
+}
+
 .psName {
     flex: 25;
     text-align: left;
@@ -15,6 +19,7 @@
 
 .psPoints, .psLegs {
     background-color: dodgerblue;
+    color: white;
     flex: 5;
 }
 

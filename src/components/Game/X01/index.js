@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 import Scoreboard from './components/Scoreboard/index'
 import actions from '../../reducer/actions'
 import Keyboard from './components/Keyboard'
+import ScoreBubble from './components/ScoreBubble'
 import './style.css'
 
-const X01 = ({currentScore, del, enter, nrPressed, playerScores}) => (
+const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredManually, scoreToDisplay}) => (
   <div className={`gameFrame`}>
     <div className={`gameLeft`}>
       <Scoreboard playerScores={playerScores}/>
       <div className={`bottom`}>
         <div className={'main'}>
-          <label>Current Score: </label>
-          <div>{JSON.stringify(currentScore)}</div>
+          <ScoreBubble value={scoreToDisplay} manuallyEntered={scoreEnteredManually}/>
         </div>
         <div className={`leftKb`}>
           <Keyboard del={del} enter={enter} nrPressed={nrPressed}/>
@@ -34,11 +34,13 @@ const createPS = (targetScore, startedBy, toThrow) => (ps) => ({
 })
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state)
   return ({
     ...ownProps,
     currentScore: state.game.currentScore,
-    playerScores: state.game.playerScores.map(createPS(state.game.points, state.game.startedBy, state.game.toThrow))
+    playerScores: state.game.playerScores.map(createPS(state.game.points, state.game.startedBy, state.game.toThrow)),
+    currentPlayerScore: (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0)),
+    scoreEnteredManually: state.game.currentScore !== 0,
+    scoreToDisplay: state.game.currentScore !== 0 ? state.game.currentScore : (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0))
   })
 }
 

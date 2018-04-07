@@ -30,9 +30,13 @@
 
 .gameLeft > .bottom {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .gameLeft > .bottom > .main {
     flex: 1;
+}
+
+.main {
+    display: flex;
 }
