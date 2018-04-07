@@ -8,9 +8,9 @@ const actionTypes = {
   DEL_PRESSED: '@@x01:DEL_PRESSED',
   ENTER_PRESSED: '@@x01:ENTER_PRESSED',
 
-  POINTS_CHANGED: '@x01setup//POINTS_CHANGED',
-  LEGS_CHANGED: '@x01setup//LEGS_CHANGED',
-  SETS_CHANGED: '@x01setup//SETS_CHANGED'
+  POINTS_CHANGED: '@@x01setup:POINTS_CHANGED',
+  LEGS_CHANGED: '@@x01setup:LEGS_CHANGED',
+  SETS_CHANGED: '@@x01setup:SETS_CHANGED'
 }
 
 const setPlayers = (nrOfPlayers) => ({
