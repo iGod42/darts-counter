@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './style.css'
 
 const ScoreBubble = ({value, manuallyEntered, noOutshot, outshot}) => (
-  <div className={`scoreBubble ${manuallyEntered ? 'manuallyEntered' : ''} ${noOutshot ? 'noOutshot' : ''} ${outshot ? 'outshot' : ''}`}>
+  <div className={`scoreBubble ${manuallyEntered ? 'manuallyEntered' : ''} ${noOutshot ? 'noOutshotScore' : ''} ${outshot ? 'outshotScore' : ''}`}>
     <span>
       {value}</span>
   </div>

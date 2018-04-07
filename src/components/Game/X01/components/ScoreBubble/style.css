@@ -24,10 +24,10 @@
     background-color: #db6c10;
 }
 
-.noOutshot {
+.noOutshotScore {
     background-color: red;
 }
 
-.outshot {
+.outshotScore {
     background-color: green;
 }

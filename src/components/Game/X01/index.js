@@ -4,15 +4,25 @@ import Scoreboard from './components/Scoreboard/index'
 import actions from '../../reducer/actions'
 import Keyboard from './components/Keyboard'
 import ScoreBubble from './components/ScoreBubble'
+import Outshots from './components/Outshots'
+
+import * as tools from './tools'
+
 import './style.css'
 
-const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredManually, scoreToDisplay}) => (
+const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredManually, scoreToDisplay, toThrow, outshots}) => (
   <div className={`gameFrame`}>
     <div className={`gameLeft`}>
       <Scoreboard playerScores={playerScores}/>
       <div className={`bottom`}>
         <div className={'main'}>
-          <ScoreBubble value={scoreToDisplay} manuallyEntered={scoreEnteredManually}/>
+          <div className={`myScore`}>
+            <span className={`playerName`}>{toThrow}</span>
+            <ScoreBubble value={scoreToDisplay} manuallyEntered={scoreEnteredManually}/>
+          </div>
+          <div className={`outshots`}>
+            <Outshots outshots={outshots}/>
+          </div>
         </div>
         <div className={`leftKb`}>
           <Keyboard del={del} enter={enter} nrPressed={nrPressed}/>
@@ -34,13 +44,17 @@ const createPS = (targetScore, startedBy, toThrow) => (ps) => ({
 })
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(state)
+  const currentPlayerScore = (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0))
   return ({
     ...ownProps,
     currentScore: state.game.currentScore,
     playerScores: state.game.playerScores.map(createPS(state.game.points, state.game.startedBy, state.game.toThrow)),
-    currentPlayerScore: (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0)),
+    currentPlayerScore,
     scoreEnteredManually: state.game.currentScore !== 0,
-    scoreToDisplay: state.game.currentScore !== 0 ? state.game.currentScore : (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0))
+    scoreToDisplay: state.game.currentScore !== 0 ? state.game.currentScore : (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0)),
+    toThrow: state.game.toThrow,
+    outshots: tools.getOutshots(currentPlayerScore)
   })
 }
 

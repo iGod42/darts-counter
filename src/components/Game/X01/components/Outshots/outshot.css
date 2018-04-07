@@ -1,0 +1,24 @@
+.outshot {
+    display: flex;
+    padding: 0.1em 0;
+}
+
+.outshotThrow {
+    width: 2em;
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    padding: 0.2em;
+    margin: 0 0.2em;
+
+}
+
+.doubleOut {
+    border-radius: 0.2em;
+    background-color: #368108;
+}
+
+.noOutshot {
+    font-size: 1.5em;
+    color: white;
+}
