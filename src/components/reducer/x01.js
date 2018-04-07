@@ -1,26 +1,13 @@
 import { actionTypes } from './actions'
 
-const calcNewValue = (lastValue, enteredNr) => {
-  if ((lastValue === 18 && enteredNr !== 0) || lastValue >= 180)
-    return lastValue
-
-  if (lastValue >= 19) {
-    return parseInt(lastValue / 10, 10) * 10 + enteredNr
-  }
-
-  return lastValue * 10 + enteredNr
-}
+const calcRemainder = (points, throws) => points - throws.reduce((sum, current) => current + sum, 0)
 
 const captureScore = (state) => {
   const theScore = JSON.parse(JSON.stringify(state.playerScores.find(ps => ps.player === state.toThrow)))
 
-  const remainingPoints = state.points - theScore.throws.reduce((sum, current) => current + sum, 0)
+  const remainingPoints = calcRemainder(state.points, theScore.throws)
 
-  if (state.currentScore >= remainingPoints-1) {
-    window.alert('Score too high')
-    return state
-  }
-  else if (state.currentScore === remainingPoints) {
+  if (state.currentScore === remainingPoints) {
     const nextStartIndex = state.players.indexOf(state.startedBy) + 1
     const nextStarter = state.players.length < nextStartIndex + 1 ? state.players[0] : state.players[nextStartIndex]
 
@@ -38,6 +25,10 @@ const captureScore = (state) => {
       toThrow: nextStarter
     }
   }
+  else if (state.currentScore >= remainingPoints - 1) {
+    window.alert('Score too high')
+    return state
+  }
   const nextIndex = state.players.indexOf(state.toThrow) + 1
   const nextPlayer = state.players.length < nextIndex + 1 ? state.players[0] : state.players[nextIndex]
 
@@ -51,12 +42,34 @@ const captureScore = (state) => {
   }
 }
 
+const nrPressed = (state, action) => {
+  const currentScore = state.playerScores.find(ps => ps.player === state.toThrow)
+  const remainder = calcRemainder(state.points, currentScore.throws)
+
+  const lastValue = state.currentScore
+  const enteredNr = action.number
+
+  let newValue = 0
+
+  if ((lastValue === 18 && enteredNr !== 0) || lastValue >= 180)
+    newValue = lastValue
+  else if (lastValue >= 19)
+    newValue = parseInt(lastValue / 10, 10) * 10 + enteredNr
+  else
+    newValue = lastValue * 10 + enteredNr
+
+  if (newValue > remainder)
+    newValue = lastValue
+
+  return {
+    ...state, currentScore: newValue
+  }
+}
+
 export default (state, action) => {
   switch (action.type) {
     case actionTypes.NR_PRESSED:
-      return {
-        ...state, currentScore: calcNewValue(state.currentScore, action.number)
-      }
+      return nrPressed(state, action)
     case actionTypes.DEL_PRESSED:
       return {
         ...state,
