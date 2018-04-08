@@ -9,19 +9,29 @@ import Outshots from './components/Outshots'
 import * as tools from './tools'
 
 import './style.css'
+import ScoreHistory from './components/ScoreHistory'
 
-const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredManually, scoreToDisplay, toThrow, outshots}) => (
+const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredManually, scoreToDisplay, toThrow, outshots, currentPlayerScore}) => (
   <div className={`gameFrame`}>
     <div className={`gameLeft`}>
-      <Scoreboard playerScores={playerScores}/>
+      <div className={`scoreBoard`}>
+        <Scoreboard playerScores={playerScores}/>
+        <div className={'scoreHistory'}>
+          <ScoreHistory throws={currentPlayerScore.throws}/>
+        </div>
+      </div>
       <div className={`bottom`}>
         <div className={'main'}>
-          <div className={`myScore`}>
-            <span className={`playerName`}>{toThrow}</span>
-            <ScoreBubble value={scoreToDisplay} manuallyEntered={scoreEnteredManually}/>
-          </div>
-          <div className={`outshots`}>
-            <Outshots outshots={outshots}/>
+          <div className={`theScore`}>
+            <div className={`playerStats`}>
+              <div className={`myScore`}>
+                <span className={`playerName`}>{toThrow}</span>
+                <ScoreBubble value={scoreToDisplay} manuallyEntered={scoreEnteredManually}/>
+              </div>
+              <div className={`outshots`}>
+                <Outshots outshots={outshots}/>
+              </div>
+            </div>
           </div>
         </div>
         <div className={`leftKb`}>
@@ -44,8 +54,8 @@ const createPS = (targetScore, startedBy, toThrow) => (ps) => ({
 })
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state)
-  const currentPlayerScore = (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0))
+  const currentPlayerScore = state.game.playerScores.find(ps => ps.player === state.game.toThrow)
+  const currentPlyerPoints = (state.game.points - currentPlayerScore.throws.reduce((sum, cur) => sum + cur, 0))
   return ({
     ...ownProps,
     currentScore: state.game.currentScore,
@@ -54,7 +64,7 @@ const mapStateToProps = (state, ownProps) => {
     scoreEnteredManually: state.game.currentScore !== 0,
     scoreToDisplay: state.game.currentScore !== 0 ? state.game.currentScore : (state.game.points - state.game.playerScores.find(ps => ps.player === state.game.toThrow).throws.reduce((sum, cur) => sum + cur, 0)),
     toThrow: state.game.toThrow,
-    outshots: tools.getOutshots(currentPlayerScore)
+    outshots: tools.getOutshots(currentPlyerPoints)
   })
 }
 

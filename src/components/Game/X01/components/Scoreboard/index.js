@@ -6,7 +6,7 @@ import ScoreHeader from '../ScoreHeader'
 import './style.css'
 
 const Scoreboard = ({playerScores}) => (
-  <div className={`sbFrame`}>
+  <div className={``}>
     <ScoreHeader/>
     {
       playerScores.map(ps => <PlayerScore key={ps.playerName} playerScore={ps}/>)

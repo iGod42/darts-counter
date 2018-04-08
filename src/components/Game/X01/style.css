@@ -30,7 +30,6 @@
 
 .gameLeft > .bottom {
     display: flex;
-    align-items: flex-end;
 }
 
 .gameLeft > .bottom > .main {
@@ -38,8 +37,9 @@
 }
 
 .main {
-    padding-top: 0.5em;
     display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .myScore {
@@ -58,4 +58,20 @@
     flex: 1;
     display: flex;
     justify-content: center;
+}
+
+.playerStats {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.theScore {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+}
+
+.scoreBoard {
+    flex:1;
 }

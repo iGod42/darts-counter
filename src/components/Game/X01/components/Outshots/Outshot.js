@@ -8,7 +8,7 @@ const Throw = ({text, isDouble}) => (
 
 const Outshot = ({outshot}) => (
   <div className={`outshot`}>
-    {outshot.map((thr, index) => <Throw key={thr} text={thr}
+    {outshot.map((thr, index) => <Throw key={index} text={thr}
                                         isDouble={index === outshot.length - 1}/>)}
   </div>)
 

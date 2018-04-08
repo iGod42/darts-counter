@@ -1,0 +1,34 @@
+.scoreHistory {
+    color: lightgray;
+    background-color: #3d5463;
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+    flex: 1;
+}
+
+.scoreHistoryThrow {
+    text-align: center;
+    background-color: #0E2F44;
+    padding: 1em;
+    width: 1.5em;
+}
+
+.lastScore {
+    background-color: #226ea7;
+}
+
+.histScores {
+    flex: 1;
+    display: flex;
+}
+
+.undoButton {
+    display: flex;
+}
+
+.undoButton > button {
+    background-color: gray;
+    padding: 0 0.5em;
+    flex: 1;
+}
