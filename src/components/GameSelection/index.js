@@ -18,7 +18,7 @@ const GameSelection = ({push, setMode}) =>
         }}/>
         <Button big text="cricket" action={() => {
           setMode('cricket')
-          push(`player-selection`)
+          push(`dummy404xxxblah`)
         }}/>
       </div>
     </div>

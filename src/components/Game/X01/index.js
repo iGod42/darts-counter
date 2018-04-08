@@ -17,7 +17,7 @@ const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredMan
       <div className={`scoreBoard`}>
         <Scoreboard playerScores={playerScores}/>
         <div className={'scoreHistory'}>
-          <ScoreHistory throws={currentPlayerScore.throws} undo={undo}/>
+          <ScoreHistory throws={currentPlayerScore.throws} maxScores={7} undo={undo}/>
         </div>
       </div>
       <div className={`bottom`}>

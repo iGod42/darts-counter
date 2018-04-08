@@ -8,6 +8,7 @@ const ScoreHistory = ({throws, maxScores, undo}) => {
   return (
     <div className={`scoreHistory`}>
       <div className={`histScores`}>
+        {throws.length > throwsToDisplay.length ? <span className={`scoreHistoryThrow`}>...</span>: null}
         {throwsToDisplay.map((thr, index) => (
           <span className={`scoreHistoryThrow ${index + 1 === throwsToDisplay.length ? 'lastScore' : ''}`}
                 key={index}>{thr}</span>))}
