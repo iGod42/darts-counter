@@ -13,7 +13,7 @@ const ScoreHistory = ({throws, maxScores, undo}) => {
                 key={index}>{thr}</span>))}
       </div>
       {undo ? <div className={'undoButton'}>
-        <Button text={'↺'}/>
+        <Button text={'↺'} action={undo}/>
       </div> : null}
     </div>)
 }

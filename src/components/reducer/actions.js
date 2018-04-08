@@ -1,6 +1,7 @@
 const actionTypes = {
   SET_MODE: '@@GAME:SET_MODE',
   START_GAME: '@@GAME:START_GAME',
+  UNDO: '@@GAME:UNDO',
 
   SET_PLAYERS: '@@PS:SET_PLAYERS',
 
@@ -53,5 +54,9 @@ const setsChanged = (newSets) => ({
   newSets
 })
 
+const undo = () => ({
+  type: actionTypes.UNDO
+})
+
 export { actionTypes }
-export default {setMode, setPlayers, enter, del, startGame, nrPressed, pointsChanged, legsChanged, setsChanged}
+export default {setMode, setPlayers, enter, del, startGame, nrPressed, pointsChanged, legsChanged, setsChanged, undo}

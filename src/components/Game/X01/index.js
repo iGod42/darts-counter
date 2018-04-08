@@ -11,13 +11,13 @@ import * as tools from './tools'
 import './style.css'
 import ScoreHistory from './components/ScoreHistory'
 
-const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredManually, scoreToDisplay, toThrow, outshots, currentPlayerScore}) => (
+const X01 = ({currentScore, del, enter, nrPressed, playerScores, scoreEnteredManually, scoreToDisplay, toThrow, outshots, currentPlayerScore ,undo}) => (
   <div className={`gameFrame`}>
     <div className={`gameLeft`}>
       <div className={`scoreBoard`}>
         <Scoreboard playerScores={playerScores}/>
         <div className={'scoreHistory'}>
-          <ScoreHistory throws={currentPlayerScore.throws}/>
+          <ScoreHistory throws={currentPlayerScore.throws} undo={undo}/>
         </div>
       </div>
       <div className={`bottom`}>
